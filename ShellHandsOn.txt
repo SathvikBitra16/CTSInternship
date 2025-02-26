@@ -1,0 +1,55 @@
+## Permission Change Hands On ##
+
+cat <<EOL > Permission.txt
+Each of the three "rwx" characters refers to a different operation you can perform on the file.
+
+The 'r' means you can "read" the file's contents.
+
+The 'w' means you can "write", or modify the file's contents.
+
+The 'x' means you can "execute" the file. This permission is given only if the file is a program.
+
+If any of the "rwx" characters are replaced by a '-', then that permission has been revoked.
+
+EOL
+
+if [ -f Permission.txt ]; then
+    echo "File Exists!"
+else
+    echo "File does not Exist"
+fi
+
+if [ -r Permission.txt ] && [ -w Permission.txt ]; then
+    echo "File Permission has been changed"
+fi
+
+ls -l Permission.txt | awk '{print $1, $9}' > Permfile.txt
+
+
+## Shell Factorial ##
+
+# Function to calculate factorial
+factorial() {
+    if [ $1 -le 1 ]; then
+        echo 1
+    else
+        prev=$(factorial $(($1 - 1)))
+        echo $(($1 * prev))
+    fi
+}
+
+# Read input from the user
+echo "Enter a number:"
+read number
+
+# Check if the input is a valid positive integer
+if ! [[ "$number" =~ ^[0-9]+$ ]]; then
+    echo "Invalid input. Please enter a positive integer."
+    exit 1
+fi
+
+# Calculate the factorial
+result=$(factorial $number)
+
+# Display the result
+echo "The factorial of $number is $result"
