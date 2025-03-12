@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* .ancestors * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+} */
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body class="ancestors">body (great-great-grandparent)
+  <!-- <div style="width:500px;">div (great-grandparent)
+    <span class="first">span direct child of div</span>
+    <ul id="list">ul (grandparent)  
+      <li>li (direct parent-1)
+        <span>span (long descender of div)</span>
+      </li>
+      <li>li (direct parent-2)
+        <span>span (long descender of div)</span>
+      </li>
+      <li>li (direct parent-3)
+        <span>span (long descender of div)</span>
+      </li>
+    </ul>  
+    <p class="para">Hello World!!!</p> 
+    <p>Bye World!!!</p> 
+  </div> -->
+  <div>
+    <p>fkefnenvevnwvnw e;kv nekvnwrfvnwr evknlvwnrvwr</p>
+    <p>vjbljcvefnvl elfkvnelkvnelkvnelvn elvnelrvnlrjvnwlrnv elvknelvne</p>
+    <ul id="list2">
+        <li>Main item 1
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+        <li>Main item 2
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+        <li>Main item 3
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+    </ul>
+
+    <button id="click-btn">Click me!!!</button>
+    
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+        // $("span").parents().css({"color": "red", "border": "2px solid red"}); here all parent elements like li,ul,div,body are affected with css mentioned
+        // $("span").parent().css({"color" : "red","border" : "2px solid black"}); here only direct parent i.e; <li> is affected
+        // $("span").parents("ul").css({"color" : "red","border" : "2px solid black"}); here it returns all ancestors of all <span> elements that are <ul> element only no ther ancestors will be affected
+        // $("span").parentsUntil("div").css({"color" : "red","border" : "2px solid black"}); here all elements between div and span are affected with css
+        // $("div").children().css({"color" : "red","border" : "2px solid black"}); here it only returns the direct children of div which is <ul> but won't return children of <ul> which are not direct children of div
+        // $("div").children("p").css({"color" : "red","border" : "2px solid black"}); here it returns direct child of div which should also be <p> as we mentioned as parameter
+        // $("div").find("span").css({"color" : "red","border" : "2px solid black"}); here it returns span by checking every child recursively so it returns not only direct child but also long distance descenders as well
+        // $("div").find("*").css({"color" : "red","border" : "2px solid black"}); here it returns every child,grand child,great-grand child etc recursively of div
+        // $("#list").siblings().css({"color" : "red","border" : "2px solid black"}); here it returns siblings of id list which are under same parent div
+        // $("#list").siblings("p").css({"color" : "red","border" : "2px solid black"}); same as before but returns only <p> elements
+        // $(".first").next().css({"color" : "red","border" : "2px solid black"}); here only the very next sibling is returned & we can use parameter to specify particular element
+        // $(".first").nextAll().css({"color" : "red","border" : "2px solid black"}); here it returns all siblings next to .first 7 we can use parameter
+        // $(".para").prev().css({"color" : "red","border" : "2px solid black"}); here it returns only the single previous sibling before .para
+        // $(".para").prevAll().css({"color" : "red","border" : "2px solid black"}); here it returns all previous siblings of .para
+        //nextUntil and prevUntil can be used to return siblings between two elements mentioned
+
+        // $("li").on("mouseenter",function(){
+        //     $(this).css("color","#666");
+        // })
+        //first we have given click functionality to all p elements
+        $("p").on("click",function(){
+            $(this).slideUp();
+        })
+        //then we appended a p tag to div tag so click function won't work for this p tag
+        $("div").append("<p>Dynamically appended p tag</p>");
+
+        //so for cases like this we need to use delegated event
+        //here we gave event handler to parent element(div) and we mentioned to delegate this event handler
+        //to p tags whenever anyone of those elements got clicked so with this even later created elements
+        //can have event handling
+        $("div").on("click","p",function(){
+            $(this).slideUp();
+        })
+
+        $("#click-btn").click({
+            user : "Peter",
+            pwd : "2345",
+            created_on : "23/01/2025"
+        },function(event){
+            greetUser(event.data);
+        });
+
+        function greetUser(userData){
+            var username = userData.user;
+            var pass = userData.pwd;
+            var date = userData.created_on;
+            alert("Welcome home "+username+" with password "+pass+" on "+date+"!!!");
+        }
+        
+
+    });
+  </script>
+</body>
+
+<!-- The outer red border, before the body element, is the html element (also an ancestor) -->
+</html>

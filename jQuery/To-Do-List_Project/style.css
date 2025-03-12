@@ -1,0 +1,27 @@
+#add-btn{
+    margin-left: 20px;
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border-radius: 8px;
+}
+#toggle-btn{
+    margin-left: 20px;
+    padding: 8px;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+}
+#addTask{
+    padding: 8px;
+}
+.mydiv{
+    text-align: center;    
+}
+h1{
+    text-align: center;
+}
+.completed{
+    text-decoration: line-through;
+    color : gray;
+}

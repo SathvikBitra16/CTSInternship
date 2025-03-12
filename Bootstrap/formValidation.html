@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <form name="myForm" onsubmit="hello(); return false">
+                    <div class="mb-2">
+                        <label for="u_name" class="form-label">Username</label>
+                        <input type="text" id="username" name="uname" class="form-control form-control-sm">
+                    </div>
+                    <div class="mb-2">
+                        <label for="pwd" class="form-label">Password</label>
+                        <input type="password" id="password" name="pwd" class="form-control form-control-sm">
+                    </div>
+                    <div class="mb-2">
+                        <input type="submit" name="login" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var uname = document.myForm.uname; //document.getElementById("username");
+        var pwd = document.myForm.pwd; //document.getElementById("password");
+         
+        function hello(){
+            alert('hello');
+            if(uname.value == ''){
+                uname.classList.add('is-invalid');
+            }
+            else if(uname.value){
+                uname.classList.remove('is-invalid');
+                uname.classList.add('is-valid');
+            }
+            if(pwd.value == ''){
+                pwd.classList.add('is-invalid');
+            }
+            else if(pwd.value){
+                pwd.classList.remove('is-invalid');
+                pwd.classList.add('is-valid');
+            }
+        }
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+</body>
+</html>

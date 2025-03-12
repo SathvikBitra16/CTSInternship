@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>The Complete jQuery Course - Project Structure</title>
+</head>
+<body>
+    <div class="gallery">
+        <img src="images/img1" alt="sample">
+    </div>
+
+    <ul id="list">
+        <li>Main item 1
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+        <li>Main item 2
+            <ul>
+                <li>sub item 3</li>
+                <li>sub item 4</li>
+            </ul>
+        </li> 
+        <li>Main item 1
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+        <li>Main item 2
+            <ul>
+                <li>sub item 1</li>
+                <li>sub item 2</li>
+            </ul>
+        </li> 
+        <li>Main item 3
+            <ul>
+                <li>Sub item 1</li>
+                <li>Sub item 2</li>
+            </ul>
+        </li>
+        <li>Main item 4
+            <ul>
+                <li>sub item 1</li>
+                <li>sub item 2</li>
+            </ul>
+        </li> 
+    </ul>
+
+    <script>
+        $(function(){
+        var galleryImg = $(".gallery").find("img").first();
+        var images = [
+            "images/img1",
+            "images/img2",
+            "images/img3"
+        ];
+
+        var i = 0;
+        setInterval(function(){
+               //0,1,2,0,1,2,0,1,2.....
+            galleryImg.fadeOut(function(){
+                i = (i+1)% images.length;
+                $(this).attr("src",images[i]);
+                $(this).fadeIn();
+            });
+            console.log(galleryImg.attr("src"));
+        }, 2000);
+
+        });
+       
+    </script>
+</body>
+</html>

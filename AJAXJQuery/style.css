@@ -1,0 +1,16 @@
+html {
+    min-height: 100%;
+    box-shadow: 0 0 8px 4px #06599d inset; }
+  
+body {
+    font-size: 16px;
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif; 
+}
+
+#mydiv{
+    margin: auto;
+    padding: auto;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+}

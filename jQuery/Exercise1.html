@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mydiv{
+            background-color: skyblue;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>JQUERY EXAMPLE PAGE</h1>
+    <h2>Heading-2 without css change</h2>
+
+    <div id="mydiv">
+        This is a sample div
+    </div>
+    <button id="mybtn">Change div color</button>
+    <p class="mypara">
+        this is the sample para for jquery testing
+    </p>
+    <input type="text">
+    <input type="password">
+
+    <h3>Multiple elements heading</h3>
+    <p>at the same time</p>
+
+    <span id="textonly">The future of those in the dystopian city of Kasi is
+         altered when the destined arrival of Lord Vishnu's final avatar launches
+          a war against darkness.
+    </span>
+    <button id="mybtn1">Change movie</button>
+    <br><br>
+    <span id="old">span tag</span>
+    <button id="mybtn2">Change element</button>
+    <input id="inputold" type="text" value="old input value">
+    <button id="mybtn3">Change value of input tag</button>
+    <br>
+    <div id="secret">
+        Hushh... this is a secret div
+    </div><br>
+    <button id="toggle-btn">toggle</button>
+    <script>
+        $(document).ready(function(){
+            $("#mybtn").click(function(){
+                $("#mydiv").css({
+                    "background-color":"red",
+                    "width":"40%"
+                }
+                );
+
+            });
+            $(".mypara").on("click",function(){
+                $(".mypara").css("color","yellow");
+            });
+            $("h1").css("color","orange");
+            $("input[type='text']").attr("placeholder", "Enter your name");
+            $("h3,p").css("background-color","yellow");
+            $("#mybtn1").click(function(){
+                $("#textonly").text("The fate of a violently contested kingdom hangs on the fraught bond between two friends-turned-foes in this saga of power, bloodshed and betrayal.");
+
+            });
+            $("#mybtn2").click(function(){
+                $("#old").html("<b>bold tag</b>");
+
+            });
+            $("#mybtn3").click(function(){
+                $("#inputold").val("New input value");
+            });
+            $("#toggle-btn").click(function(){
+                $("#secret").toggle();
+            })
+            
+        });
+        
+    </script>
+</body>
+</html>

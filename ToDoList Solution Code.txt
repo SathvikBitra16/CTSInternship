@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List using jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #taskList {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        button {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>jQuery To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter new task">
+    <button id="addTask">Add Task</button>
+    <button id="toggleTasks">Show/Hide Tasks</button>
+
+    <ul id="taskList"></ul>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+$(document).ready(function(){
+
+    // Function to add a new task
+    $("#addTask").click(function(){
+        let taskText = $("#taskInput").val().trim();
+
+        if(taskText !== "") {
+            let newTask = $("<li></li>").text(taskText);
+
+            // Add "Complete" button
+            let completeBtn = $("<button>✅</button>").click(function(){
+                $(this).parent().toggleClass("completed");
+            });
+
+            // Add "Delete" button
+            let deleteBtn = $("<button>❌</button>").click(function(){
+                $(this).parent().remove();
+            });
+
+            newTask.append(completeBtn, deleteBtn);
+            $("#taskList").append(newTask);
+            $("#taskInput").val(""); // Clear input field
+        } else {
+            alert("Please enter a task!");
+        }
+    });
+
+    // Function to toggle task visibility
+    $("#toggleTasks").click(function(){
+        $("#taskList").toggle();
+    });
+
+});
